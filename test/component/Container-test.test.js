@@ -11,6 +11,14 @@ const mockData = {
       2000: 1,
       2001: .8
     }
+  },
+  placeofthefakes: {
+    location: 'Some fake fake placey',
+    data: {
+      1999: 2,
+      2000: 4,
+      2001: .1
+    }
   }
 };
 
@@ -46,5 +54,5 @@ it('should create cards based on how many districts are in the data', () => {
     <Container data={mockData}
                activeCards={activeCards}
                clickActive={mockFn}/>);
-  console.log(wrapper.debug())
-})
+  expect(wrapper.find('.card').length).toEqual(2);
+});
