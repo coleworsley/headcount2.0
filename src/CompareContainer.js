@@ -1,20 +1,23 @@
 import React from 'react';
 import CompareCard from './CompareCard'
-import Card from './Card'
+import Card from './Card';
+import { func, array} from 'prop-types'
 
 
 const CompareContainer = ({ data, compareAverage, clickActive, activeCards }) => {
+  // console.log(data);
   const card1 = data[0] !== undefined ?
-    <Card clickActive={clickActive}
+    <Card className="comparison-card"
+          clickActive={clickActive}
           city={data[0]}
           activeCards={activeCards}/> :
-    <div className='empty-card'></div>
+      null
 
   const card2 = data[1] !== undefined ?
     <Card clickActive={clickActive}
           city={data[1]}
           activeCards={activeCards}/> :
-    <div className='empty-card'></div>
+      null
 
   return (
     <div className='compare-container'>
@@ -27,6 +30,13 @@ const CompareContainer = ({ data, compareAverage, clickActive, activeCards }) =>
       </div>
     </div>
   )
+}
+
+CompareContainer.propTypes = {
+  data: array,
+  compareAverage: func,
+  clickActive: func,
+  activeCards: array
 }
 
 export default CompareContainer;
